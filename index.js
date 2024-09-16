@@ -1,6 +1,7 @@
-import chalk from "chalk";
 import { log } from "node:console";
 import EventEmitter from "node:events";
+import Dice from "./Dice.js";
+import Logger from "./Logger.js";
 
 /*const emitter1 = new EventEmitter();
 
@@ -41,50 +42,18 @@ log("=====================");
 emitter2.removeListener("error", listener2);
 emitter2.emit("error");*/
 
-/*class Dice extends EventEmitter {
-    roll() {
-        const result = Math.floor(Math.random() * 6) + 1;
+/*const emitter3 = new EventEmitter();
+const dice = new Dice(emitter3);
 
-        this.emit('rolled', result);
-    }
-}
-
-const dice = new Dice();
-
-dice.on('rolled', (result) => {
-    log(`Dice rolled: ${result}🎲`);
+emitter3.once('rolled', () => {
+    log();
 });
 
 log('The dice is rolling...');
 dice.roll();*/
 
-class Logger extends EventEmitter {
-    log(message) {
-        this.emit('log', `[LOG] ${message}`);
-    }
-
-    warning(message) {
-        this.emit('warning', chalk.yellow(`[WARNING] ${message}`));
-    }
-
-    error(message) {
-        this.emit('error', chalk.red(`[ERROR] ${message}`));
-    }
-}
-
-const logger = new Logger();
-
-logger.on('log', (message) => {
-    console.log(`Subsciber1 received: \n${message}`);
-});
-
-logger.on('warning', (message) => {
-    console.warn(`Subsciber2 received: \n${message}`);
-});
-
-logger.on('error', (message) => {
-    console.error(`Subsciber3 received: \n${message}`);
-});
+const emitter4 = new EventEmitter();
+const logger = new Logger(emitter4);
 
 logger.log('This is a standard log message.');
 logger.warning('This is a warning message.');
