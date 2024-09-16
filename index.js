@@ -52,9 +52,9 @@ emitter3.once('rolled', () => {
 log('The dice is rolling...');
 dice.roll();*/
 
-const emitter4 = new EventEmitter();
+/*const emitter4 = new EventEmitter();
 const logger = new Logger(emitter4);
 
 logger.log('This is a standard log message.');
 logger.warning('This is a warning message.');
-logger.error('This is an error message.');
+logger.error('This is an error message.');*/
